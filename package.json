@@ -1,7 +1,7 @@
 {
   "name": "storm-scrollspy",
   "version": "0.1.0",
-  "description": "",
+  "description": "Automated scroll position related navigation state management",
   "author": "stormid",
   "license": "MIT",
   "repository": {

@@ -4,6 +4,12 @@
 ```
 npm i -S storm-scrollspy
 ```
+
+```javascript
+var ScrollSpy = require('storm-scrollspy')
+ScrollSpy.init('js-scrollspy');
+```
+
 ```html
 <nav class="js-scrollspy">
     <a href="#section1">Section 1</a>
@@ -13,11 +19,6 @@ npm i -S storm-scrollspy
 <section id="section1"></section>
 <section id="section2"></section>
 <section id="section3"></section>
-```
-
-```javascript
-var ScrollSpy = require('storm-scrollspy')
-ScrollSpy.init('js-scrollspy');
 ```
 
 ###Options
