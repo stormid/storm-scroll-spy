@@ -22,10 +22,6 @@ ScrollSpy.init('js-scrollspy');
 ```
 
 ###Options
-onClassName, String, default: 'active',
-modalSelector, String, default: 'js-modal',
-styles: Array of objects, index 0 the off state, index 1 the on state
-
 Defaults:
 
 ```javascript
