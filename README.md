@@ -7,7 +7,7 @@ npm i -S storm-scrollspy
 
 ```javascript
 var ScrollSpy = require('storm-scrollspy')
-ScrollSpy.init('js-scrollspy');
+ScrollSpy.init('.js-scrollspy');
 ```
 
 ```html
