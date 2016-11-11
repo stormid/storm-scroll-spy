@@ -30,17 +30,16 @@ const html = `<nav class="js-scroll-spy">
 
 document.body.innerHTML = html;
 
-let ScrollSpySet = ScrollSpy.init('.js-scroll-spy'),
-	ScrollSpySet2 = ScrollSpy.init('.js-scroll-spy2', {
+let ScrollSpy1 = ScrollSpy.init('.js-scroll-spy'),
+	ScrollSpy2 = ScrollSpy.init('.js-scroll-spy-2', {
 		offset: 10
 	});
 
 describe('Initialisation', () => {
 
-	it('should return array of tab accordions', () => {
-		should(ScrollSpySet)
-		.Array()
-		.and.have.lengthOf(1);
+	it('should return a scroll spy object', () => {
+		should(ScrollSpy1)
+		.Object();
 	});
 
 	
@@ -49,22 +48,22 @@ describe('Initialisation', () => {
 	});
 	
 	it('each array item should be an object with the correct properties', () => {
-		ScrollSpySet[0].should.be.an.instanceOf(Object).and.not.empty();
-		ScrollSpySet[0].should.have.property('settings').Object();
-		ScrollSpySet[0].should.have.property('init').Function();
-		ScrollSpySet[0].should.have.property('initListeners').Function();
-		ScrollSpySet[0].should.have.property('getNavItems').Function();
-		ScrollSpySet[0].should.have.property('setPositions').Function();
-		ScrollSpySet[0].should.have.property('sortNavItems').Function();
-		ScrollSpySet[0].should.have.property('setInitialActiveItem').Function();
-		ScrollSpySet[0].should.have.property('setCurrentItem').Function();
-		ScrollSpySet[0].should.have.property('toggle').Function();
+		
+		ScrollSpy1.should.have.property('settings').Object();
+		ScrollSpy1.should.have.property('init').Function();
+		ScrollSpy1.should.have.property('initListeners').Function();
+		ScrollSpy1.should.have.property('getNavItems').Function();
+		ScrollSpy1.should.have.property('setPositions').Function();
+		ScrollSpy1.should.have.property('sortNavItems').Function();
+		ScrollSpy1.should.have.property('setInitialActiveItem').Function();
+		ScrollSpy1.should.have.property('setCurrentItem').Function();
+		ScrollSpy1.should.have.property('toggle').Function();
     
 	});
 
 
 	it('should initialisation with different settings if different options are passed', () => {
-		should(ScrollSpySet2[0].settings.offset).not.equal(ScrollSpySet[0].settings.offset);
+		should(ScrollSpy2.settings.offset).not.equal(ScrollSpy1.settings.offset);
 	});
 	
 

@@ -1,6 +1,6 @@
 /**
  * @name storm-scroll-spy: Automated scroll position related navigation state management
- * @version 0.1.3: Fri, 11 Nov 2016 15:51:44 GMT
+ * @version 0.1.3: Fri, 11 Nov 2016 16:19:31 GMT
  * @author mjbp
  * @license MIT
  */
@@ -141,12 +141,10 @@ const init = (sel, opts) => {
 	
 	if(!els.length) throw new Error('Scroll Spy cannot be initialised, no augmentable elements found');
 
-	return els.map((el) => {
-		return Object.assign(Object.create(StormScrollSpy), {
-			DOMElements: els,
-			settings: Object.assign({}, defaults, opts)
-		}).init();
-	});
+	return Object.assign(Object.create(StormScrollSpy), {
+		DOMElements: els,
+		settings: Object.assign({}, defaults, opts)
+	}).init();
 };
 
 export default { init };
