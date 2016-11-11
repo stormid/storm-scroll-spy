@@ -1,35 +1,58 @@
 {
-  "name": "storm-scrollspy",
+  "name": "storm-scroll-spy",
   "version": "0.1.3",
   "description": "Automated scroll position related navigation state management",
-  "author": "stormid",
+  "author": "mjbp",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/mjbp/storm-scrollspy.git"
+    "url": "https://github.com/mjbp/storm-scroll-spy.git"
   },
   "bugs": {
-    "url": "https://github.com/mjbp/storm-scrollspy/issues"
+    "url": "https://github.com/mjbp/storm-scroll-spy/issues"
   },
-  "main": "dist/storm-scrollspy.min.js",
-  "devDependencies": {
-    "browser-sync": "^2.11.1",
-    "gulp": "^3.9.0",
-    "gulp-browserify": "^0.5.1",
-    "gulp-gh-pages": "^0.5.4",
-    "gulp-header": "^1.2.2",
-    "gulp-notify": "^2.2.0",
-    "gulp-rename": "^1.2.2",
-    "gulp-uglify": "^1.4.2",
-    "run-sequence": "^1.1.0"
-  },
+  "main": "dist/storm-scroll-spy.min.js",
   "keywords": [
     "stormid",
     "ui",
     "scroll",
-    "scrollspy"
+    "scrollspy",
+    "UI"
   ],
+  "scripts": {
+    "build": "gulp build",
+    "start": "gulp",
+    "test": "istanbul cover _mocha --report lcovonly -- -R spec && codecov",
+    "test:watch": "NODE_ENV=test mocha --watch"
+  },
+  "devDependencies": {
+    "babel": "^6.5.2",
+    "babel-core": "^6.7.2",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-preset-es2015": "^6.5.0",
+    "babelify": "^7.3.0",
+    "browser-sync": "^2.17.5",
+    "browserify": "^13.1.0",
+    "gulp": "^3.9.0",
+    "gulp-babel": "^6.1.2",
+    "gulp-gh-pages": "^0.5.4",
+    "gulp-header": "^1.2.2",
+    "gulp-notify": "^2.2.0",
+    "gulp-plumber": "^1.1.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-uglify": "^2.0.0",
+    "gulp-wrap-umd": "^0.2.1",
+    "istanbul": "^1.1.0-alpha.1",
+    "jsdom": "^9.8.0",
+    "jsdom-global": "^2.1.0",
+    "mocha": "^3.1.2",
+    "object-assign": "^4.0.1",
+    "run-sequence": "^1.1.0",
+    "should": "^11.1.1",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0"
+  },
   "dependencies": {
-    "lodash.throttle": "^4.1.0"
+    "lodash": "^4.16.6"
   }
 }
