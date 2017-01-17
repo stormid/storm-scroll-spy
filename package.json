@@ -1,4 +1,4 @@
-{
+ {
   "name": "storm-scroll-spy",
   "version": "0.1.3",
   "description": "Automated scroll position related navigation state management",
@@ -11,7 +11,7 @@
   "bugs": {
     "url": "https://github.com/mjbp/storm-scroll-spy/issues"
   },
-  "main": "dist/storm-scroll-spy.min.js",
+  "main": "dist/storm-scroll-spy.js",
   "keywords": [
     "stormid",
     "ui",
