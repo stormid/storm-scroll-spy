@@ -1,6 +1,6 @@
 /**
  * @name storm-scroll-spy: Automated scroll position related navigation state management
- * @version 0.1.3: Thu, 05 Jan 2017 13:25:48 GMT
+ * @version 0.1.3: Fri, 20 Jan 2017 16:48:37 GMT
  * @author mjbp
  * @license MIT
  */

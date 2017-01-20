@@ -81,17 +81,19 @@ gulp.task('js:es5', function() {
 		.pipe(gulp.dest('dist/'));
 });
 
-gulp.task('js:async', function() {
-    return gulp.src('src/*.js')
+gulp.task('js:es5-browserify', function() {
+    return browserify({
+            entries: 'src/' + pkg.name + '.js',
+            debug: true
+        })
+        .transform(babelify, {presets: ['es2015']})
+        .bundle()
+        .pipe(source(pkg.name + '.js'))
+        .pipe(buffer())
+        .pipe(uglify())
         .pipe(header(banner, {pkg : pkg}))
-		.pipe(browserify({
-          insertGlobals : true,
-          debug : false,
-		  standalone: componentName()
-        }))
-		.pipe(uglify())
-  		.pipe(rename({suffix: '.async.min'}))
-		.pipe(gulp.dest('dist'));
+  		.pipe(rename({suffix: '.standalone'}))
+		.pipe(gulp.dest('dist/'));
 });
 
 gulp.task('js:es6', function() {
@@ -101,7 +103,7 @@ gulp.task('js:es6', function() {
 		.pipe(gulp.dest('dist/'));
 });
 
-gulp.task('js', ['js:es6', 'js:es5']);
+gulp.task('js', ['js:es6', 'js:es5-browserify']);
 
 gulp.task('copy', function() {
     return gulp.src('./dist/*.js')
