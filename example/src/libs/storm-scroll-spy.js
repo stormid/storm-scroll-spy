@@ -1,10 +1,10 @@
 /**
  * @name storm-scroll-spy: Automated scroll position related navigation state management
- * @version 0.1.3: Fri, 20 Jan 2017 16:48:29 GMT
+ * @version 0.1.3: Tue, 31 Jan 2017 18:00:06 GMT
  * @author mjbp
  * @license MIT
  */
-import throttle from 'lodash/throttle';
+import throttle from 'lodash.throttle';
 
 
 let docHeight = null;
