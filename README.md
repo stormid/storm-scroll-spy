@@ -31,7 +31,7 @@ npm i -S storm-scroll-spy
 ```
 either using es6 import
 ```
-import TabAccordion from 'storm-scroll-spy';
+import ScrollSpy from 'storm-scroll-spy';
 
 ScrollSpy.init('.js-scroll-spy');
 ```
@@ -39,16 +39,10 @@ aynchronous browser loading (use the .standalone version in the /dist folder)
 ```
 import Load from 'storm-load';
 
-Load('/content/js/async/storm-scroll-spyn.standalone.js')
+Load('/content/js/async/storm-scroll-spy.standalone.js')
     .then(() => {
         ScrollSpy.init('.js-scroll-spy');
     });
-```
-or es5 commonjs  (legacy, use the .standalone version in the /dist folder)
-```
-var ScrollSpy = require('./libs/storm-scroll-spy');
-
-ScrollSpy.init('.js-scroll-spy');
 ```
 
 
@@ -73,11 +67,6 @@ ScrollSpy.init('.js-scrollspy', {
 ```
 
 
-##API
-####`ScrollSpy.init(selector, opts)`
-Initialise the module with a DOM selector and  options object
-
-
 ##Tests
 ```
 npm run test
@@ -86,13 +75,15 @@ npm run test
 ##Browser support
 This is module has both es6 and es5 distributions. The es6 version should be used in a workflow that transpiles.
 
-The es5 version depends unpon Object.assign, element.classList, and Promises so all evergreen browsers are supported out of the box, ie9+ is supported with polyfills. ie8+ will work with even more polyfils for Array functions and eventListeners.
+This module depends upon Object.assign, element.classList, and Promises, available in all evergreen browsers. ie9+ is supported with polyfills, ie8+ will work with even more polyfills for Array functions and eventListeners.
 
 ##Dependencies
-None
+None external.
+
+Imports lodash.throttle.
 
 ##License
 MIT
 
 ##Credits
-Adapted from an initial fork of cferdinandi's gumshoe
+Inspired by cferdinandi's gumshoe
