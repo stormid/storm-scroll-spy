@@ -117,7 +117,7 @@
         </section>
         <hr>
         <h2>Installation</h2>
-        <pre class="language-markup"><code>$ npm i -S storm-scroll-points</code></pre>
+        <pre class="language-markup"><code>$ npm i -S storm-scroll-spy</code></pre>
         <h2>Usage</h2>
         <h3>HTML</h3>
         <pre><code class="language-html"><script type="prism-html-markup"><nav class="js-scroll-spy">
@@ -136,13 +136,13 @@
 </section></script></code></pre>
         <h3>JS</h3>
         <p>Either import and initialise using a named import:</p>
-        <pre><code class="language-js">import ScrollPoints from 'storm-scroll-points';
+        <pre><code class="language-js">import ScrollSpy from 'storm-scroll-spy';
             
-ScrollPoints.init('.js-scroll-points');</code></pre>
+ScrollSpy.init('.js-scroll-spy');</code></pre>
         <p>Or async using storm-load.js, add the .standalone file to your project, then initialise using the global name:</p>
-        <pre><code class="language-js">Load('/content/js/async/storm-scroll-points.standalone.js')
+        <pre><code class="language-js">Load('/content/js/async/storm-scroll-spy.standalone.js')
 .then(() => {
-    StormScrollPoints.init('.js-scroll-points');
+    StormScrollSpy.init('.js-scroll-spy');
 });</code></pre>
     </div>
     <script src="./js/app.js"></script>
