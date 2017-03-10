@@ -6,6 +6,9 @@
 
 Automated scroll position related navigation state management 
 
+##Example
+[https://mjbp.github.io/storm-scroll-spy](https://mjbp.github.io/storm-scroll-spy)
+
 ##Usage
 HTML
 ```
@@ -45,24 +48,19 @@ Load('/content/js/async/storm-scroll-spy.standalone.js')
     });
 ```
 
-
-##Example
-[https://mjbp.github.io/storm-scroll-spy](https://mjbp.github.io/storm-scroll-spy)
-
-
 ##Options
 ```
-    {
-		offset: 0,
-		activeClassName: 'active',
-		callback: null
-    }
+{
+    offset: 0,
+    activeClassName: 'active',
+    callback: null
+}
 ```
 
 e.g.
 ```
 ScrollSpy.init('.js-scrollspy', {
-		offset: 50%
+	offset: 50%
 });
 ```
 
