@@ -44,7 +44,7 @@ import Load from 'storm-load';
 
 Load('/content/js/async/storm-scroll-spy.standalone.js')
     .then(() => {
-        ScrollSpy.init('.js-scroll-spy');
+        StormScrollSpy.init('.js-scroll-spy');
     });
 ```
 
