@@ -1,4 +1,4 @@
-#Storm Scroll Spy
+# Storm Scroll Spy
 
 [![Build Status](https://travis-ci.org/mjbp/storm-scroll-spy.svg?branch=master)](https://travis-ci.org/mjbp/storm-scroll-spy)
 [![codecov.io](http://codecov.io/github/mjbp/storm-scroll-spy/coverage.svg?branch=master)](http://codecov.io/github/mjbp/storm-scroll-spy?branch=master)
@@ -6,10 +6,10 @@
 
 Automated scroll position related navigation state management 
 
-##Example
+## Example
 [https://mjbp.github.io/storm-scroll-spy](https://mjbp.github.io/storm-scroll-spy)
 
-##Usage
+## Usage
 HTML
 ```
 <nav class="js-scroll-spy">
@@ -48,7 +48,7 @@ Load('/content/js/async/storm-scroll-spy.standalone.js')
     });
 ```
 
-##Options
+## Options
 ```
 {
     offset: 0,
@@ -65,23 +65,23 @@ ScrollSpy.init('.js-scrollspy', {
 ```
 
 
-##Tests
+## Tests
 ```
 npm run test
 ```
 
-##Browser support
+## Browser support
 This is module has both es6 and es5 distributions. The es6 version should be used in a workflow that transpiles.
 
 This module depends upon Object.assign, element.classList, and Promises, available in all evergreen browsers. ie9+ is supported with polyfills, ie8+ will work with even more polyfills for Array functions and eventListeners.
 
-##Dependencies
+## Dependencies
 None external.
 
 Imports lodash.throttle.
 
-##License
+## License
 MIT
 
-##Credits
+## Credits
 Inspired by cferdinandi's gumshoe
