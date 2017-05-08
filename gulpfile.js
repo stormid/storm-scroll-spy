@@ -80,15 +80,18 @@ gulp.task('js:es5', function() {
             template: umdTemplate
         }))
         .pipe(header(banner, {pkg : pkg}))
-  		.pipe(rename({suffix: '.standalone'}))
+  		.pipe(rename({
+            basename: pkg.name,
+            suffix: '.standalone'
+        }))
 		.pipe(gulp.dest('dist/'));
 });
 
 gulp.task('js:es5-rollup', function() {
-	return gulp.src('src/' + pkg.name + '.js')
+	return gulp.src('src/index.js')
         .pipe(rollup({
 			allowRealFiles: true,
-            entry: 'src/' + pkg.name + '.js',
+            entry: 'src/index.js',
 			format: 'es',
 			plugins: [
 				rollupNodeResolve(),
@@ -103,22 +106,29 @@ gulp.task('js:es5-rollup', function() {
             template: umdTemplate
         }))
         .pipe(header(banner, {pkg : pkg}))
-  		.pipe(rename({suffix: '.standalone'}))
+  		.pipe(rename({
+            basename: pkg.name,
+            suffix: '.standalone'
+        }))
 		.pipe(gulp.dest('dist/'));
 });
 
 gulp.task('js:es6', function() {
-    return gulp.src('src/*.js')
+    gulp.src('src/*.js')
         .pipe(plumber({errorHandler: onError}))
         .pipe(header(banner, {pkg : pkg}))
 		.pipe(gulp.dest('dist/'));
+
+    return gulp.src('./src/lib/*.js')
+		.pipe(gulp.dest('./dist/lib/'));
 });
 
 gulp.task('js', ['js:es6', 'js:es5-rollup']);
 
+
 gulp.task('copy', function() {
-    return gulp.src('./dist/*.js')
-		.pipe(gulp.dest('./example/src/libs/'));
+    return gulp.src('./src/**/*.js')
+		.pipe(gulp.dest('./example/src/libs/component'));
 });
 
 gulp.task('example:import', function(){
@@ -138,8 +148,6 @@ gulp.task('example:async', function(){
 });
 gulp.task('example', ['example:import', 'example:async']);
 
-
-
 gulp.task('server', ['js', 'copy', 'example'], function() {
     browserSync({
         notify: false,
@@ -148,7 +156,7 @@ gulp.task('server', ['js', 'copy', 'example'], function() {
         tunnel: false
     });
 
-      gulp.watch(['src/*'], function(){
+      gulp.watch(['src/**/*.js'], function(){
           runSequence('js', 'copy', 'example', reload);
       });
       gulp.watch(['example/**/*'], ['example', reload]);

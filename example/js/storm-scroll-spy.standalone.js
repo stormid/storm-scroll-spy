@@ -1,6 +1,6 @@
 /**
  * @name storm-scroll-spy: Automated scroll position-related navigation state management
- * @version 0.1.3: Thu, 16 Mar 2017 16:41:30 GMT
+ * @version 1.0.1: Mon, 08 May 2017 12:52:54 GMT
  * @author mjbp
  * @license MIT
  */
@@ -25,6 +25,12 @@ Object.defineProperty(exports, "__esModule", {
 });
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+var defaults = {
+  offset: 0,
+  activeClassName: 'active',
+  callback: null
+};
 
 var commonjsGlobal = typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
 
@@ -462,9 +468,7 @@ function toNumber(value) {
   return isBinary || reIsOctal.test(value) ? freeParseInt(value.slice(2), isBinary ? 2 : 8) : reIsBadHex.test(value) ? NAN : +value;
 }
 
-var index = throttle;
-
-var docHeight = null;
+var index$1 = throttle;
 
 var isHidden = function isHidden(el) {
   return el.offsetParent === null;
@@ -472,46 +476,43 @@ var isHidden = function isHidden(el) {
 var inView = function inView(el) {
   if (isHidden(el)) return false;
 
-  var view = {
-    l: 0,
-    t: 0,
-    b: window.innerHeight || document.documentElement.clientHeight,
-    r: window.innerWidth || document.documentElement.clientWidth
-  },
-      box = el.getBoundingClientRect();
-  return box.right >= view.l && box.bottom >= view.t && box.left <= view.r && box.top <= view.b;
+  var box = el.getBoundingClientRect();
+  return box.right >= 0 && box.bottom >= 0 && box.left <= (window.innerWidth || document.documentElement.clientWidth) && box.top <= (window.innerWidth || document.documentElement.clientWidth);
 };
-var defaults = {
-  offset: 0,
-  activeClassName: 'active',
-  callback: null
-};
-var StormScrollSpy = {
+var FPS = 16;
+
+var docHeight = void 0;
+
+var componentPrototype = {
   init: function init() {
+    var _this = this;
+
     this.navItems = this.getNavItems();
     this.setPositions();
     this.sortNavItems();
-    this.setInitialActiveItem();
+    this.activeNavItem = this.navItems.filter(function (item) {
+      return item.node.classList.contains(_this.settings.activeClassName);
+    })[0] || null;
     this.setCurrentItem();
     this.initListeners();
     return this;
   },
   initListeners: function initListeners() {
-    this.throttledScroll = index(function () {
-      this.setCurrentItem();
-    }.bind(this), 16);
+    var _this2 = this;
 
-    this.throttledResize = index(function () {
-      this.setPositions();
-      this.setCurrentItem();
-    }.bind(this), 16);
+    this.throttledScroll = index$1(this.setCurrentItem.bind(this), FPS);
+
+    this.throttledResize = index$1(function () {
+      _this2.setPositions();
+      _this2.setCurrentItem();
+    }, FPS);
 
     window.addEventListener('scroll', this.throttledScroll, false);
     window.addEventListener('scroll', this.throttledResize, false);
   },
   getNavItems: function getNavItems() {
     return this.DOMElements.map(function (item) {
-      if (!item.hash || !document.querySelector(item.hash)) return;
+      if (!item.hash || !document.querySelector(item.hash)) return null;
 
       return {
         node: item,
@@ -522,7 +523,7 @@ var StormScrollSpy = {
     });
   },
   setPositions: function setPositions() {
-    var _this = this;
+    var _this3 = this;
 
     var getOffsetTop = function getOffsetTop(el) {
       var location = 0;
@@ -534,7 +535,7 @@ var StormScrollSpy = {
       } else {
         location = el.offsetTop;
       }
-      location = location - _this.settings.offset;
+      location = location - _this3.settings.offset;
       return location >= 0 ? location : 0;
     };
 
@@ -545,21 +546,10 @@ var StormScrollSpy = {
   },
   sortNavItems: function sortNavItems() {
     this.navItems.sort(function (a, b) {
-      if (a.position > b.position) {
-        return -1;
-      }
-      if (a.position < b.position) {
-        return 1;
-      }
+      if (a.position > b.position) return -1;
+      if (a.position < b.position) return 1;
       return 0;
     });
-  },
-  setInitialActiveItem: function setInitialActiveItem() {
-    var _this2 = this;
-
-    this.activeNavItem = this.navItems.filter(function (item) {
-      return item.node.classList.contains(_this2.settings.activeClassName);
-    })[0] || null;
   },
   setCurrentItem: function setCurrentItem() {
     var position = window.pageYOffset;
@@ -578,14 +568,13 @@ var StormScrollSpy = {
     }
     //nothing found
     this.toggle(null);
-    !!this.settings.callback && this.settings.callback();
+    !!this.settings.callback && typeof this.settings.prehook === 'function' && this.settings.callback();
   },
   toggle: function toggle(next) {
     if (this.activeNavItem === next) return;
 
-    if (this.activeNavItem) {
-      this.activeNavItem.node.classList.remove(this.settings.activeClassName);
-    }
+    if (this.activeNavItem) this.activeNavItem.node.classList.remove(this.settings.activeClassName);
+
     this.activeNavItem = next;
     if (!next) return;
 
@@ -598,13 +587,13 @@ var init = function init(sel, opts) {
 
   if (!els.length) throw new Error('Scroll Spy cannot be initialised, no augmentable elements found');
 
-  return Object.assign(Object.create(StormScrollSpy), {
+  return Object.assign(Object.create(componentPrototype), {
     DOMElements: els,
     settings: Object.assign({}, defaults, opts)
   }).init();
 };
 
-var stormScrollSpy = { init: init };
+var index = { init: init };
 
-exports.default = stormScrollSpy;;
+exports.default = index;;
 }));

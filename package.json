@@ -11,7 +11,7 @@
   "bugs": {
     "url": "https://github.com/mjbp/storm-scroll-spy/issues"
   },
-  "main": "dist/storm-scroll-spy.js",
+  "main": "dist/index.js",
   "keywords": [
     "stormid",
     "ui",

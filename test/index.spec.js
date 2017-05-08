@@ -1,6 +1,6 @@
 import should from 'should';
-import ScrollSpy from '../dist/storm-scroll-spy';
 import 'jsdom-global/register';
+import ScrollSpy from '../dist/storm-scroll-spy.standalone';
 
 const html = `<nav class="js-scroll-spy">
             <a href="#section1">Section 1</a>
@@ -55,7 +55,6 @@ describe('Initialisation', () => {
 		ScrollSpy1.should.have.property('getNavItems').Function();
 		ScrollSpy1.should.have.property('setPositions').Function();
 		ScrollSpy1.should.have.property('sortNavItems').Function();
-		ScrollSpy1.should.have.property('setInitialActiveItem').Function();
 		ScrollSpy1.should.have.property('setCurrentItem').Function();
 		ScrollSpy1.should.have.property('toggle').Function();
     
