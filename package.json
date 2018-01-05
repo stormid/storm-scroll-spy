@@ -1,6 +1,6 @@
 {
   "name": "storm-scroll-spy",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Automated scroll position-related navigation state management",
   "author": "mjbp",
   "license": "MIT",
