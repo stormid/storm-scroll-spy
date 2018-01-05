@@ -1,6 +1,6 @@
 /**
  * @name storm-scroll-spy: Automated scroll position-related navigation state management
- * @version 1.0.2: Fri, 09 Jun 2017 10:41:46 GMT
+ * @version 1.0.3: Fri, 05 Jan 2018 12:08:34 GMT
  * @author mjbp
  * @license MIT
  */
@@ -468,7 +468,7 @@ function toNumber(value) {
   return isBinary || reIsOctal.test(value) ? freeParseInt(value.slice(2), isBinary ? 2 : 8) : reIsBadHex.test(value) ? NAN : +value;
 }
 
-var index$1 = throttle;
+var index$2 = throttle;
 
 var isHidden = function isHidden(el) {
   return el.offsetParent === null;
@@ -500,9 +500,9 @@ var componentPrototype = {
   initListeners: function initListeners() {
     var _this2 = this;
 
-    this.throttledScroll = index$1(this.setCurrentItem.bind(this), FPS);
+    this.throttledScroll = index$2(this.setCurrentItem.bind(this), FPS);
 
-    this.throttledResize = index$1(function () {
+    this.throttledResize = index$2(function () {
       _this2.setPositions();
       _this2.setCurrentItem();
     }, FPS);
@@ -589,11 +589,11 @@ var init = function init(sel, opts) {
 
   return Object.assign(Object.create(componentPrototype), {
     DOMElements: els,
-    settings: Object.assign({}, defaults, el.dataset, opts)
+    settings: Object.assign({}, defaults, opts)
   }).init();
 };
 
-var index = { init: init };
+var index$1 = { init: init };
 
-exports.default = index;;
+exports.default = index$1;;
 }));

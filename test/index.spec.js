@@ -15,17 +15,17 @@ const html = `<nav class="js-scroll-spy">
         <section id="section3" style="height:500px">
             Section 3
         </section><nav class="js-scroll-spy-2">
-            <a href="#section1">Section 1</a>
-            <a href="#section2">Section 2</a>
-            <a href="#section3">Section 3</a>
-        </nav><section id="section1" style="height:500px">
-            Section 1
+            <a href="#section4">Section 1</a>
+            <a href="#section5">Section 2</a>
+            <a href="#section6">Section 3</a>
+        </nav><section id="section4" style="height:500px">
+            Section 4
         </section>
-        <section id="section2" style="height:500px">
-            Section 2
+        <section id="section5" style="height:500px">
+            Section 5
         </section>
-        <section id="section3" style="height:500px">
-            Section 3
+        <section id="section6" style="height:500px">
+            Section 36
         </section>`;
 
 document.body.innerHTML = html;

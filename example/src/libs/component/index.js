@@ -8,7 +8,7 @@ const init = (sel, opts) => {
 
 	return Object.assign(Object.create(componentPrototype), {
 		DOMElements: els,
-		settings: Object.assign({}, defaults, el.dataset, opts)
+		settings: Object.assign({}, defaults, opts)
 	}).init();
 };
 
