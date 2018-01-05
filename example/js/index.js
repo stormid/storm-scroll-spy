@@ -1,6 +1,6 @@
 /**
  * @name storm-scroll-spy: Automated scroll position-related navigation state management
- * @version 1.0.1: Mon, 08 May 2017 12:52:54 GMT
+ * @version 1.0.2: Fri, 09 Jun 2017 10:41:45 GMT
  * @author mjbp
  * @license MIT
  */
@@ -14,7 +14,7 @@ const init = (sel, opts) => {
 
 	return Object.assign(Object.create(componentPrototype), {
 		DOMElements: els,
-		settings: Object.assign({}, defaults, opts)
+		settings: Object.assign({}, defaults, el.dataset, opts)
 	}).init();
 };
 
