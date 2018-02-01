@@ -1,4 +1,4 @@
-import throttle from 'lodash.throttle';
+import throttle from 'raf-throttle';
 
 const isHidden = el => el.offsetParent === null,
       inView = el => {
@@ -6,8 +6,7 @@ const isHidden = el => el.offsetParent === null,
         
           let box = el.getBoundingClientRect();
           return (box.right >= 0 && box.bottom >= 0 && box.left <= (window.innerWidth || document.documentElement.clientWidth) && box.top <= (window.innerWidth || document.documentElement.clientWidth));
-      },
-      FPS = 16;
+      }
 
 let docHeight;
 
@@ -22,15 +21,15 @@ export default {
         return this;
     },
     initListeners() {
-        this.throttledScroll = throttle(this.setCurrentItem.bind(this), FPS);
+        this.throttledScroll = throttle(this.setCurrentItem.bind(this));
         
         this.throttledResize = throttle(() => {
             this.setPositions();
             this.setCurrentItem();
-        }, FPS);
+        });
 
         window.addEventListener('scroll', this.throttledScroll, false);
-        window.addEventListener('scroll', this.throttledResize, false);
+        window.addEventListener('resize', this.throttledResize, false);
     },
     getNavItems() {
         return this.DOMElements.map(item => {
