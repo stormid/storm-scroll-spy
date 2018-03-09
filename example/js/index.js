@@ -1,7 +1,7 @@
 /**
  * @name storm-scroll-spy: Automated scroll position-related navigation state management
- * @version 1.0.4: Thu, 01 Feb 2018 12:24:28 GMT
- * @author mjbp
+ * @version 1.1.1: Fri, 09 Mar 2018 15:00:02 GMT
+ * @author stormid
  * @license MIT
  */
 import defaults from './lib/defaults';

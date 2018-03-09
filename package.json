@@ -2,14 +2,14 @@
   "name": "storm-scroll-spy",
   "version": "1.1.1",
   "description": "Automated scroll position-related navigation state management",
-  "author": "mjbp",
+  "author": "stormid",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/mjbp/storm-scroll-spy.git"
+    "url": "https://github.com/stormid/storm-scroll-spy.git"
   },
   "bugs": {
-    "url": "https://github.com/mjbp/storm-scroll-spy/issues"
+    "url": "https://github.com/stormid/storm-scroll-spy/issues"
   },
   "main": "dist/index.js",
   "keywords": [
@@ -23,8 +23,9 @@
   "scripts": {
     "build": "gulp build",
     "start": "gulp",
-    "test": "istanbul cover _mocha --report lcovonly -- -R spec && codecov",
-    "test:watch": "NODE_ENV=test mocha --watch"
+    "test": "_mocha",
+    "test:watch": "NODE_ENV=test mocha --watch",
+    "test:coverage": "istanbul cover _mocha --report lcovonly -- -R spec && codecov"
   },
   "browserify": {
     "transform": [
@@ -65,7 +66,7 @@
     "rollup-plugin-node-resolve": "^2.0.0",
     "run-sequence": "^1.1.0",
     "should": "^11.1.1",
-    "storm-load": "^0.4.2",
+    "storm-load": "^1.0.2",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0"
   },

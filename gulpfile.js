@@ -91,8 +91,10 @@ gulp.task('js:es5-rollup', function() {
 	return gulp.src('src/index.js')
         .pipe(rollup({
 			allowRealFiles: true,
-            entry: 'src/index.js',
-			format: 'es',
+            input: 'src/index.js',
+			output: {
+                format: 'es'
+            },
 			plugins: [
 				rollupNodeResolve(),
                 commonjs()
