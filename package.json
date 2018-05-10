@@ -71,6 +71,7 @@
     "vinyl-source-stream": "^1.1.0"
   },
   "dependencies": {
-    "raf-throttle": "^2.0.3"
+    "raf-throttle": "^2.0.3",
+    "storm-tabs": "^1.3.2"
   }
 }

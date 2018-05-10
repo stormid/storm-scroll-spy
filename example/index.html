@@ -76,6 +76,24 @@
             margin-bottom:20px;
             background-color:#f6f6f6;
         }
+        .tabs__nav {
+            display: block;
+            border-bottom:2px solid #eee; 
+        }
+        .tabs__nav-link {
+            display: inline-block;
+            padding:.5rem 1rem;
+        }
+        .tabs__nav-link:hover {
+            background-color:#fafafa;
+        }
+        .tabs__nav-link.active{
+            background:#eee;
+        }
+        .tabs__section {
+            padding:2rem;
+            background:#eee;
+
     </style>
 </head>
 <body>
@@ -98,8 +116,17 @@
         <h1>Scroll Spy</h1>
         <h2>Example</h2>
         <p>Scroll down to see the menu to highlight the current section and to see example code.</p>
-        <section id="section1" style="height:500px">
-            Section 1
+        <section id="section1">
+            <div class="js-tabs tabs">
+                <div class="tabs__nav">
+                    <a id="tab-1" class="tabs__nav-link js-tabs__link" href="#panel-1">Tab 1</a>
+                    <a id="tab-2" class="tabs__nav-link js-tabs__link" href="#panel-2">Tab 2</a>
+                    <a id="tab-3" class="tabs__nav-link js-tabs__link" href="#panel-3">Tab 3</a>
+                </div>
+                <section id="panel-1" class="tabs__section" style="height:2000px">Panel 1</section>
+                <section id="panel-2" class="tabs__section" style="height:500px">Panel 2</section>
+                <section id="panel-3" class="tabs__section" style="height:100px">Panel 3</section>
+            </div>
         </section>
         <section id="section2" style="height:1500px">
             Section 2

@@ -1,6 +1,6 @@
 /**
  * @name storm-scroll-spy: Automated scroll position-related navigation state management
- * @version 1.1.1: Fri, 09 Mar 2018 15:00:03 GMT
+ * @version 1.1.2: Thu, 10 May 2018 15:25:47 GMT
  * @author stormid
  * @license MIT
  */
@@ -111,6 +111,8 @@ var componentPrototype = {
 
         window.addEventListener('scroll', this.throttledScroll, false);
         window.addEventListener('resize', this.throttledResize, false);
+        this.observer = new MutationObserver(this.throttledResize);
+        this.observer.observe(document.body, { attributes: true, childList: true, subtree: true });
     },
     getNavItems: function getNavItems() {
         return this.DOMElements.map(function (item) {

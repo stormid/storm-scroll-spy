@@ -30,6 +30,8 @@ export default {
 
         window.addEventListener('scroll', this.throttledScroll, false);
         window.addEventListener('resize', this.throttledResize, false);
+        this.observer = new MutationObserver(this.throttledResize);
+        this.observer.observe(document.body, { attributes: true, childList: true, subtree: true });
     },
     getNavItems() {
         return this.DOMElements.map(item => {
