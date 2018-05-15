@@ -76,8 +76,6 @@ This is module has both es6 and es5 distributions. The es6 version should be use
 This module depends upon Object.assign available in all evergreen browsers. ie9+ is supported with polyfills, ie8+ will work with even more polyfills for Array functions and eventListeners.
 
 ## Dependencies
-None external.
-
 Imports raf-throttle.
 
 ## License
